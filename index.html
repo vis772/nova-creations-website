@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova Creations — Modern Marketing Agency</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'ui-sans-serif', 'system-ui'],
+            body: ['Inter', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            brand: {
+              deep: '#0a1b4d',   // Lavish blue
+              royal: '#132a8a',  // Rich darker variant
+              accent: '#5aa7ff', // Lighter accent
+              glow: '#7cc0ff'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 2px rgba(90,167,255,0.15), 0 12px 30px -8px rgba(90,167,255,0.35)',
+            soft: '0 12px 32px -12px rgba(0,0,0,.45)',
+          },
+          backgroundImage: {
+            'hero-grad': 'radial-gradient(1200px 600px at 80% -10%, rgba(122, 186, 255, 0.25), transparent 60%), radial-gradient(900px 500px at 10% 10%, rgba(19, 42, 138, 0.4), transparent 60%)',
+            'pane-grad': 'linear-gradient(180deg, rgba(19,42,138,0.45), rgba(10,27,77,0.65))',
+            'card-grad': 'linear-gradient(180deg, rgba(14,30,91,0.7), rgba(9,21,68,0.85))',
+            'ring-grad': 'conic-gradient(from 90deg at 50% 50%, rgba(122,186,255,0.25), rgba(19,42,138,0.35), rgba(122,186,255,0.25))'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' }
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(90,167,255,0.35)' },
+              '50%': { boxShadow: '0 0 0 10px rgba(90,167,255,0)' }
+            }
+          },
+          animation: {
+            float: 'float 4s ease-in-out infinite',
+            pulseGlow: 'pulseGlow 2.2s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Reveal-on-scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    /* Subtle selection */
+    ::selection { background: rgba(90,167,255,.28); color: #fff; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-brand-deep text-white font-body antialiased relative">
+  <!-- Background canvas -->
+  <div class="fixed inset-0 -z-10 pointer-events-none">
+    <div class="absolute inset-0 bg-hero-grad opacity-80"></div>
+    <div class="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full blur-3xl opacity-30" style="background: radial-gradient(closest-side, rgba(90,167,255,.45), transparent);"></div>
+    <div class="absolute bottom-[-120px] left-[-120px] w-[620px] h-[620px] rounded-full blur-3xl opacity-20" style="background: radial-gradient(closest-side, rgba(19,42,138,.7), transparent);"></div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-30 backdrop-blur-xl bg-brand-deep/60 border-b border-white/10">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+      <!-- Brand: NOVA with rocket below -->
+      <a href="#home" class="group flex items-end gap-4 select-none">
+        <div class="flex flex-col items-center leading-none">
+          <span class="font-display font-black tracking-[0.35em] text-2xl sm:text-3xl text-white">NOVA</span>
+          <!-- Rocket under NOVA -->
+          <span aria-hidden="true" class="-mt-1">
+            <svg class="w-6 h-6 text-brand-accent animate-float drop-shadow" viewBox="0 0 64 64" fill="none">
+              <!-- body -->
+              <path d="M32 8c7 6 14 20 10 30-3 8-17 8-20 0-4-10 3-24 10-30Z" fill="currentColor"/>
+              <!-- window -->
+              <circle cx="32" cy="26" r="5" fill="#0a1b4d"/>
+              <!-- fins -->
+              <path d="M20 38c-6 2-10 7-10 12 8-3 12-5 16-10-2-1-4-1-6-2Z" fill="url(#finL)"/>
+              <path d="M44 38c6 2 10 7 10 12-8-3-12-5-16-10 2-1 4-1 6-2Z" fill="url(#finR)"/>
+              <!-- flame -->
+              <path d="M30 44c-2 3-2 7 2 10 4-3 4-7 2-10h-4Z" fill="#ffb454"/>
+              <defs>
+                <linearGradient id="finL" x1="10" y1="38" x2="26" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#7cc0ff"/><stop offset="1" stop-color="#1f5aff"/>
+                </linearGradient>
+                <linearGradient id="finR" x1="38" y1="38" x2="54" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#7cc0ff"/><stop offset="1" stop-color="#1f5aff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+        </div>
+        <span class="pb-1 text-white/80 uppercase tracking-[0.35em] text-xs sm:text-sm">Creations</span>
+      </a>
+
+      <!-- Nav links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-white/80 hover:text-white transition">About</a>
+        <a href="#services" class="text-white/80 hover:text-white transition">Services</a>
+        <a href="#testimonials" class="text-white/80 hover:text-white transition">Testimonials</a>
+        <a href="#contact" class="text-white/80 hover:text-white transition">Contact</a>
+      </div>
+
+      <!-- CTA -->
+      <a href="#contact" class="inline-flex items-center gap-2 bg-brand-accent text-brand-deep font-semibold px-4 py-2 rounded-full shadow-glow hover:shadow-lg hover:shadow-brand-accent/40 hover:-translate-y-0.5 active:translate-y-0 transition">
+        Start Your Launch
+        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 0 1 1.5 0v7.69l2.72-2.72a.75.75 0 1 1 1.06 1.06l-4 4a.75.75 0 0 1-1.28-.53v-9.5Z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 text-brand-glow/90 bg-white/5 border border-white/10 rounded-full px-3 py-1 mb-5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
+            Modern Marketing • AI-Ready
+          </span>
+          <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight">
+            Launch your brand into a
+            <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(90deg, #7cc0ff, #5aa7ff 40%, #2f68ff);">futuristic orbit</span>
+          </h1>
+          <p class="mt-5 text-white/80 max-w-xl">
+            Nova Creations blends creativity, strategy, and AI-powered insight to accelerate growth. Elegant branding, standout social presence, and campaigns that perform.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-brand-accent text-brand-deep font-semibold px-6 py-3 rounded-xl shadow-glow hover:-translate-y-0.5 hover:shadow-brand-accent/40 active:translate-y-0 transition">
+              Start Your Launch
+              <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 0 1 1.5 0v7.69l2.72-2.72a.75.75 0 1 1 1.06 1.06l-4 4a.75.75 0 0 1-1.28-.53v-9.5Z"/></svg>
+            </a>
+            <a href="#services" class="inline-flex items-center justify-center gap-2 border border-white/15 bg-white/5 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition">
+              Explore Services
+              <svg class="w-5 h-5 opacity-80" viewBox="0 0 20 20" fill="currentColor"><path d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H4.25A.75.75 0 0 1 3.5 10Z"/></svg>
+            </a>
+          </div>
+          <div class="mt-10 flex items-center gap-6 text-white/60">
+            <div class="flex -space-x-2">
+              <div class="w-8 h-8 rounded-full bg-brand-accent/20 ring-2 ring-white/10"></div>
+              <div class="w-8 h-8 rounded-full bg-brand-accent/30 ring-2 ring-white/10"></div>
+              <div class="w-8 h-8 rounded-full bg-brand-accent/40 ring-2 ring-white/10"></div>
+            </div>
+            <p class="text-sm">Trusted by ambitious founders and bold teams</p>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="relative">
+            <!-- Decorative ring -->
+            <div class="absolute -inset-6 rounded-2xl bg-ring-grad opacity-40 blur-xl -z-10"></div>
+            <!-- Hero pane -->
+            <div class="bg-pane-grad border border-white/10 rounded-2xl p-6 lg:p-8 shadow-soft">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-white/70 text-sm">Projected Growth</p>
+                  <p class="text-3xl font-display font-bold">+214%</p>
+                </div>
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-white/80">
+                  AI Insights
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
+                </span>
+              </div>
+              <!-- Mini chart -->
+              <div class="mt-6 h-36 rounded-xl bg-gradient-to-b from-white/5 to-white/0 border border-white/10 relative overflow-hidden">
+                <svg class="absolute inset-0 w-full h-full opacity-80" viewBox="0 0 600 200" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="grad" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#5aa7ff" stop-opacity="0.9" />
+                      <stop offset="100%" stop-color="#5aa7ff" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <polyline points="0,160 80,150 140,140 200,120 260,130 320,110 380,90 440,95 500,70 600,60"
+                            fill="url(#grad)" stroke="#7cc0ff" stroke-width="3"/>
+                </svg>
+              </div>
+              <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <p class="text-xs text-white/60">Reach</p>
+                  <p class="text-xl font-display font-semibold">4.2M</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <p class="text-xs text-white/60">CTR</p>
+                  <p class="text-xl font-display font-semibold">3.9%</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <p class="text-xs text-white/60">ROI</p>
+                  <p class="text-xl font-display font-semibold">5.3x</p>
+                </div>
+              </div>
+            </div>
+            <!-- Floating orb -->
+            <div class="absolute -bottom-6 -right-4 w-20 h-20 rounded-full bg-brand-accent/30 blur-xl animate-pulseGlow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="reveal text-center">
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl tracking-tight">
+          About <span class="text-brand-accent">Us</span>
+        </h2>
+        <p class="mt-4 text-white/80 max-w-3xl mx-auto">
+          We’re a modern marketing studio crafting elegant brands and intelligent campaigns. Creativity meets innovation—with strategy that scales and design that feels effortless.
+        </p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 7L2 4v13l10 5 10-5V4L12 9Z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl">Creativity as a System</h3>
+          <p class="mt-2 text-white/70">We design with intention—balancing bold ideas with clean, minimalist execution.</p>
+        </div>
+        <div class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 .001 18.001A9 9 0 0 0 12 3Zm-1 5h2v6h-2V8Zm0 8h2v2h-2v-2Z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl">Innovation that Performs</h3>
+          <p class="mt-2 text-white/70">AI-enhanced insights guide smarter campaigns, better fit for your audience.</p>
+        </div>
+        <div class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v1h18V5a2 2 0 0 0-2-2Zm2 5H3v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Zm-6 2h4v2h-4v-2Z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl">Partnership, Not Vendors</h3>
+          <p class="mt-2 text-white/70">Flexible, collaborative, and transparent from kickoff to launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="reveal text-center">
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl tracking-tight">
+          Services built for <span class="text-brand-accent">momentum</span>
+        </h2>
+        <p class="mt-4 text-white/80 max-w-3xl mx-auto">
+          From brand foundations to performance channels—crafted to elevate, designed to scale.
+        </p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <!-- Social Media Marketing -->
+        <div class="reveal group bg-card-grad border border-white/10 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-glow transition">
+          <div class="w-11 h-11 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm4.75 10.75H13v3.75h-2V12.75H7.25v-2H11V7h2v3.75h3.75v2Z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl">Social Media Marketing</h3>
+          <p class="mt-2 text-white/70">Channel strategy, content systems, and paid campaigns engineered for growth.</p>
+          <ul class="mt-4 space-y-2 text-white/70 text-sm">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Content calendars & production</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Paid social & optimization</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Community & engagement</li>
+          </ul>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-2 text-brand-accent hover:text-white transition">
+            Let’s talk
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H4.25A.75.75 0 0 1 3.5 10Z"/></svg>
+          </a>
+        </div>
+
+        <!-- Branding -->
+        <div class="reveal group bg-card-grad border border-white/10 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-glow transition">
+          <div class="w-11 h-11 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7v10l10 5 10-5V7L12 2Zm0 2.2L19.6 7 12 10.8 4.4 7 12 4.2Zm-8 7.1 8 4 8-4v5.5l-8 4-8-4V11.3Z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl">Branding</h3>
+          <p class="mt-2 text-white/70">Visual systems that feel timeless—logos, palettes, and guidelines with purpose.</p>
+          <ul class="mt-4 space-y-2 text-white/70 text-sm">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Identity & logo suites</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Style guides & templates</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Launch assets</li>
+          </ul>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-2 text-brand-accent hover:text-white transition">
+            Build my brand
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H4.25A.75.75 0 0 1 3.5 10Z"/></svg>
+          </a>
+        </div>
+
+        <!-- AI-Powered Marketing -->
+        <div class="reveal group bg-card-grad border border-white/10 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-glow transition">
+          <div class="w-11 h-11 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 0 1 5 5h2a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-2a5 5 0 0 1-5 5 5 5 0 0 1-5-5H5a3 3 0 0 1-3-3V10a3 3 0 0 1 3-3h2a5 5 0 0 1 5-5Zm-3 9h6v2H9v-2Z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl">AI-Powered Marketing</h3>
+          <p class="mt-2 text-white/70">Predictive insights and adaptive creative to optimize every step.</p>
+          <ul class="mt-4 space-y-2 text-white/70 text-sm">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Audience modeling</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Creative testing</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span> Performance dashboards</li>
+          </ul>
+          <a href="#contact" class="mt-5 inline-flex items-center gap-2 text-brand-accent hover:text-white transition">
+            Unlock with AI
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H4.25A.75.75 0 0 1 3.5 10Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="reveal text-center">
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl tracking-tight">
+          Clients, <span class="text-brand-accent">elevated</span>
+        </h2>
+        <p class="mt-4 text-white/80 max-w-3xl mx-auto">
+          High-impact creative and smart execution—backed by transparent communication.
+        </p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <figure class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <blockquote class="text-white/85">“Nova Creations reimagined our brand and ignited our pipeline. The lift in qualified leads has been remarkable.”</blockquote>
+          <figcaption class="mt-4 text-white/60 text-sm">Avery Chen — VP Growth, Helios</figcaption>
+        </figure>
+        <figure class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <blockquote class="text-white/85">“Elegant design, clean systems, and real performance. The team is fast, thoughtful, and a joy to work with.”</blockquote>
+          <figcaption class="mt-4 text-white/60 text-sm">Jordan Patel — Founder, Luma Labs</figcaption>
+        </figure>
+        <figure class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <blockquote class="text-white/85">“Their AI approach gave us clarity and speed. Our campaigns feel smarter—and look incredible.”</blockquote>
+          <figcaption class="mt-4 text-white/60 text-sm">Samira Ali — CMO, Northwave</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+      <div class="reveal text-center">
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl tracking-tight">
+          Let’s build <span class="text-brand-accent">what’s next</span>
+        </h2>
+        <p class="mt-4 text-white/80 max-w-2xl mx-auto">
+          Ready to launch? Reach out and we’ll get you moving—strategic, elegant, and effective.
+        </p>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center">
+              <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.1 15.1 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1v3.48a1 1 0 0 1-1 1A17 17 0 0 1 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.56 1 1 0 0 1-.24 1.01l-2.21 2.22Z"/></svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-display font-semibold text-xl">Call Us</h3>
+              <p class="mt-1 text-white/80">We’re here to plan your launch.</p>
+              <a href="tel:6513926499" class="mt-3 inline-flex items-center gap-2 text-brand-accent hover:text-white transition">
+                651-392-6499
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H4.25A.75.75 0 0 1 3.5 10Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal bg-card-grad border border-white/10 rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-brand-accent/20 border border-brand-accent/30 flex items-center justify-center">
+              <svg class="w-6 h-6 text-brand-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v.4l-8 5.6-8-5.6V6Zm0 2.2V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.2l-7.4 5.2a3 3 0 0 1-3.2 0L4 8.2Z"/></svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-display font-semibold text-xl">Email</h3>
+              <p class="mt-1 text-white/80">Share your goals and timeline.</p>
+              <a href="mailto:novacreations321@gmail.com" class="mt-3 inline-flex items-center gap-2 text-brand-accent hover:text-white transition break-all">
+                novacreations321@gmail.com
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.5 10a.75.75 0 0 1 .75-.75h9.69l-3.22-3.22a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H4.25A.75.75 0 0 1 3.5 10Z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inline note: No form added to keep things direct and secure -->
+      <div class="reveal mt-10 text-center text-white/60 text-sm">
+        Prefer a quick intro call? Tap the number above—no forms needed.
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="flex flex-col items-center leading-none">
+          <span class="font-display font-black tracking-[0.35em] text-lg">NOVA</span>
+          <svg class="w-4 h-4 text-brand-accent" viewBox="0 0 64 64" fill="none"><path d="M32 8c7 6 14 20 10 30-3 8-17 8-20 0-4-10 3-24 10-30Z" fill="currentColor"/><circle cx="32" cy="26" r="5" fill="#0a1b4d"/></svg>
+        </div>
+        <span class="uppercase tracking-[0.35em] text-xs text-white/70">Creations</span>
+      </div>
+      <p class="text-white/60 text-sm">© <span id="year"></span> Nova Creations. All rights reserved.</p>
+      <div class="flex items-center gap-5 text-white/70 text-sm">
+        <a href="#about" class="hover:text-white transition">About</a>
+        <a href="#services" class="hover:text-white transition">Services</a>
+        <a href="#testimonials" class="hover:text-white transition">Testimonials</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d1a7b96075acd5',t:'MTc1NDg1MTU3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
